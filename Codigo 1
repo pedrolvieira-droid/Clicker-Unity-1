@@ -1,0 +1,40 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Aula : MonoBehaviour
+{
+    int recursos_ = 0;
+    int recursos_por_clique_ = 1;
+
+   public Text contador;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public void clique ()
+    {
+        recursos_ = recursos_ + recursos_por_clique_;
+
+        contador.text = recursos_.ToString();
+    }
+    public void cliqueupgrade(int preço)
+    {
+        if (preço <= recursos_)
+        {
+            recursos_ = recursos_ - preço;
+           recursos_por_clique_ = recursos_por_clique_ + (preço / 10);
+            Debug.Log("UPGRADE COMPRADO! Custo: " + preço + " | Novo Saldo: " + recursos_ + " | Novo Poder de Clique: " + recursos_por_clique_);
+        }
+    
+        else
+        {
+            Debug.Log("Não tem recursos...");
+        }
+    }
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
